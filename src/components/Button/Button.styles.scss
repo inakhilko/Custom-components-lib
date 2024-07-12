@@ -1,0 +1,56 @@
+.button {
+  border-radius: 4px;
+  border: none;
+
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 600;
+
+  &-variant {
+    &--outlined {
+      outline: none;
+      color: cornflowerblue;
+    }
+
+    &--text {
+      outline: 1px cornflowerblue solid;
+      color: cornflowerblue;
+    }
+
+    &--contained {
+      outline: none;
+      background-color: cornflowerblue;
+      color: white;
+    }
+  }
+
+  &-size {
+    &--small {
+      padding: 6px 8px;
+
+      font-size: 0.875rem;
+    }
+
+    &--medium {
+      padding: 5px 15px;
+
+      font-size: 1rem;
+    }
+
+    &--large {
+      padding: 7px 21px;
+
+      font-size: 1.125rem;
+    }
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
