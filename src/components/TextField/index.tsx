@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import './TextField.styles.scss';
 
 export type TextFieldProps = {
@@ -6,19 +6,32 @@ export type TextFieldProps = {
   error: boolean;
 };
 
-type PropsWithChildren<P> = P & { children?: ReactNode };
-
-const TextField: React.FC<PropsWithChildren<TextFieldProps>> = ({
-  disabled,
-  error,
-  children,
-  ...props
-}) => {
+const TextField: React.FC<TextFieldProps> = ({ disabled, error, ...props }) => {
+  const [inputValue, setInputValue] = useState('');
   return (
-    <fieldset className="text-field">
-      <legend className="text-field__name">Do you agree?</legend>
-      <input className="text-field__input" type="text" id="" name="agree" value="Yes!" {...props} />
-    </fieldset>
+    <div
+      className={`custom-text-field ${disabled && 'custom-text-field--disabled'} ${error && 'custom-text-field--error'} ${inputValue && 'custom-text-field--entered'}`}
+    >
+      <label className="text-field__label" htmlFor="">
+        Do you agree?
+      </label>
+      <div className={`text-field`}>
+        <input
+          className="text-field__input"
+          type="text"
+          id=""
+          name="agree"
+          disabled={disabled}
+          autoComplete="off"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          {...props}
+        />
+        <fieldset className="text-field__set">
+          <legend className="text-field__legend">Do you agree?</legend>
+        </fieldset>
+      </div>
+    </div>
   );
 };
 

@@ -10,6 +10,7 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
     '@storybook/addon-styling-webpack',
+    'storybook-addon-pseudo-states',
     {
       name: 'storybook-addon-sass-postcss',
       options: {
@@ -24,7 +25,7 @@ const config: StorybookConfig = {
     options: {},
   },
   typescript: {
-    check: true
-  }
+    check: true,
+  },
 };
 export default config;

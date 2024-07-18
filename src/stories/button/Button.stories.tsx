@@ -1,4 +1,4 @@
-import type  { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Example from './Example';
 
 const meta: Meta<typeof Example> = {
@@ -15,7 +15,23 @@ export const Text: Story = {
     disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Text Button');
+      console.log('Small Text Index');
+    },
+  },
+};
+
+export const TextHovered: Story = {
+  args: {
+    variant: 'text',
+    disabled: false,
+    size: 'small',
+    onClick: () => {
+      console.log('Small Text Index');
+    },
+  },
+  parameters: {
+    pseudo: {
+      hover: true,
     },
   },
 };
@@ -26,7 +42,23 @@ export const Contained: Story = {
     disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Contained Outlined Button');
+      console.log('Contained Outlined Index');
+    },
+  },
+};
+
+export const ContainedHovered: Story = {
+  args: {
+    variant: 'contained',
+    disabled: false,
+    size: 'small',
+    onClick: () => {
+      console.log('Contained Outlined Index');
+    },
+  },
+  parameters: {
+    pseudo: {
+      hover: true,
     },
   },
 };
@@ -37,7 +69,23 @@ export const Outlined: Story = {
     disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Outlined Button');
+      console.log('Small Outlined Index');
+    },
+  },
+};
+
+export const OutlinedHovered: Story = {
+  args: {
+    variant: 'outlined',
+    disabled: false,
+    size: 'small',
+    onClick: () => {
+      console.log('Small Outlined Index');
+    },
+  },
+  parameters: {
+    pseudo: {
+      hover: true,
     },
   },
 };
@@ -48,7 +96,7 @@ export const Small: Story = {
     disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Outlined Button');
+      console.log('Small Outlined Index');
     },
   },
 };
@@ -59,7 +107,7 @@ export const Medium: Story = {
     disabled: false,
     size: 'medium',
     onClick: () => {
-      console.log('Medium Outlined Button');
+      console.log('Medium Outlined Index');
     },
   },
 };
@@ -70,16 +118,7 @@ export const Large: Story = {
     disabled: false,
     size: 'large',
     onClick: () => {
-      console.log('Large Outlined Button');
+      console.log('Large Outlined Index');
     },
   },
 };
-// export const Contained: Story = {
-//   args: {
-//     text: 'Button',
-//     primary: false,
-//     disabled: false,
-//     size: 'small',
-//     onClick: () => { console.log('Button'); },
-//   },
-// };

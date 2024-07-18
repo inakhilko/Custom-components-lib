@@ -1,30 +1,30 @@
 import React, { FC } from 'react';
-import { ButtonProps } from '../../components/Button';
-import Button from '../../components/Button';
+import Select, { SelectProps } from '../../components/Select';
 
-const Example: FC<ButtonProps> = ({
-  disabled = false,
-  onClick = () => {},
-  size,
+const Example: FC<SelectProps> = ({
+  selectOptions,
+  label,
   variant,
+  disabled = false,
+  error = false,
 }) => {
   return (
     <div
       style={{
+        padding: '50px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
       }}
     >
-      <Button
+      <Select
+        label={label}
         variant={variant}
-        size={size}
+        selectOptions={selectOptions}
         disabled={disabled}
-        onClick={onClick}
-      >
-        Test
-      </Button>
+        error={error}
+      />
     </div>
   );
 };

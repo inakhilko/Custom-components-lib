@@ -1,13 +1,14 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin, { Configuration } from 'mini-css-extract-plugin';
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 type Mode = 'production' | 'development';
 interface EnvVariables {
   mode: Mode;
 }
 
-export default (env: EnvVariables): Configuration => {
+export default (env: EnvVariables): Configuration extends DevServerConfiguration => {
   return {
     mode: env.mode ?? 'development',
     entry: path.resolve(__dirname, 'src', 'index.tsx'),

@@ -1,0 +1,128 @@
+@import '../variables';
+
+.custom-text-field {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+
+  .text-field__label {
+    padding: 0 2px;
+    position: absolute;
+    top: 32%;
+    left: 6%;
+    color: grey;
+    opacity: 1;
+    font-size: 1rem;
+    transition:
+      opacity 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+    transform: translateY(0);
+    transform-origin: bottom left;
+  }
+
+  .text-field {
+    position: relative;
+    border-radius: inherit;
+
+    &__input {
+      margin: 0;
+      padding: 16.5px 14px;
+      border: 0;
+
+      color: currentColor;
+      font-size: 1rem;
+      background: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__set {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: -5px;
+      left: 0;
+      padding: 0 8px;
+      border: solid 1px var(--primaryColor);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    &__legend {
+      padding: 0;
+      font-size: 0.75rem;
+      opacity: 0;
+      max-width: 0.01px;
+      transition:
+        max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+        opacity 0.3s ease-in-out,
+        transform 0.3s ease-in-out;
+      white-space: nowrap;
+    }
+  }
+
+  &:focus-within {
+    .text-field__label {
+      color: var(--activeColor);
+      transform: translateY(-140%) scale(0.75);
+      transform-origin: bottom left;
+    }
+
+    .text-field__set {
+      border: 2px solid var(--activeColor);
+
+      .text-field__legend {
+        max-width: 100%;
+        opacity: 0;
+        color: var(--activeColor);
+        font-size: 0.75rem;
+        padding: 0 4px;
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: none;
+  }
+
+  &--error {
+    .text-field__label {
+      color: var(--errorColor);
+    }
+
+    .text-field__set {
+      border: 2px solid var(--errorColor);
+    }
+
+    &:focus-within {
+      .text-field__label {
+        color: var(--errorColor);
+      }
+
+      .text-field__set {
+        border-color: var(--errorColor);
+      }
+    }
+  }
+
+  &--entered {
+    .text-field {
+      &__label {
+        transform: translateY(-140%) scale(0.75);
+        transform-origin: bottom left;
+      }
+
+      &__legend {
+        max-width: 100%;
+        padding: 0 4px;
+      }
+    }
+  }
+}

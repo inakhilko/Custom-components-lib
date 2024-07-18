@@ -51,6 +51,7 @@
     "sass": "^1.77.7",
     "sass-loader": "^14.2.1",
     "storybook": "^8.2.1",
+    "storybook-addon-pseudo-states": "^3.1.1",
     "storybook-addon-sass-postcss": "^0.3.0",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
@@ -63,6 +64,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "style-loader": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
