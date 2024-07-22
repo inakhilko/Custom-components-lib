@@ -2,13 +2,13 @@ import React, { useCallback, useState } from 'react';
 import './Select.styles.scss';
 import useOutsideClick from '../../hooks/onClickOutside';
 
-export type SelectProps = {
+export interface SelectProps {
   variant: 'standard' | 'filled' | 'outlined';
   selectOptions: number[] | string[];
   label: string;
   disabled: boolean;
   error: boolean;
-};
+}
 
 const Select: React.FC<SelectProps> = ({
   variant,
@@ -43,7 +43,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div
       ref={ref}
-      className={`custom-select ${'custom-select--' + variant} ${selectedOption && 'custom-select--selected'} ${isSelectMenuOpened && 'custom-select--opened'}  ${disabled && 'custom-select--disabled'}`}
+      className={`custom-select ${'custom-select--' + variant} ${selectedOption !== '' && 'custom-select--selected'} ${isSelectMenuOpened && 'custom-select--opened'}  ${disabled && 'custom-select--disabled'} ${error && 'custom-select--error'}`}
       onClick={onCustomSelectClick}
     >
       <label className="custom-select__label" htmlFor="custom-select-input">
@@ -55,7 +55,6 @@ const Select: React.FC<SelectProps> = ({
           aria-hidden="true"
           tabIndex={-1}
           className="custom-select__input"
-          id="custom-select-input"
           value={selectedOption}
           disabled={disabled}
           readOnly
@@ -81,18 +80,18 @@ const Select: React.FC<SelectProps> = ({
         role="listbox"
         id="select-dropdown"
       >
-        {selectOptions &&
-          selectOptions.map((option) => {
-            return (
-              <li
-                className={`custom-select__dropdown-option ${option === selectedOption && 'custom-select__dropdown-option--selected'}`}
-                role="option"
-                key={option}
-              >
-                {option}
-              </li>
-            );
-          })}
+        {selectOptions?.map((option) => {
+          return (
+            <li
+              className={`custom-select__dropdown-option ${option === selectedOption && 'custom-select__dropdown-option--selected'}`}
+              role="option"
+              tabIndex={0}
+              key={option}
+            >
+              {option}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

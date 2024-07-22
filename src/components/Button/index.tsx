@@ -1,38 +1,29 @@
-import React, { MouseEventHandler, ReactNode } from 'react';
+import React, { type ComponentProps } from 'react';
 import './Button.styles.scss';
 
-export type ButtonProps = {
+export interface ButtonProps extends ComponentProps<'button'> {
   variant: 'text' | 'contained' | 'outlined';
-  disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
   size: 'small' | 'medium' | 'large';
-};
+}
 
-type PropsWithChildren<P> = P & { children?: ReactNode };
-
-const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  variant = 'outlined',
-  disabled,
-  size,
-  onClick,
-  children,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = (props) => {
+  const {
+    variant = 'contained',
+    disabled,
+    size = 'medium',
+    ...otherProps
+  } = props;
   return (
     <button
       className={[
         'button',
         `button-variant--${variant}`,
         `button-size--${size}`,
-        !disabled && `button--disabled`,
+        disabled === true ? `button--disabled` : '',
       ].join(' ')}
       type="button"
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
+      {...otherProps}
+    />
   );
 };
 

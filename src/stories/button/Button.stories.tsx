@@ -1,124 +1,95 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Example from './Example';
+import Button from "../../components/Button";
 
-const meta: Meta<typeof Example> = {
+const meta: Meta<typeof Button> = {
   title: 'Button',
-  component: Example,
+  component: Button,
 };
 
 export default meta;
-type Story = StoryObj<Parameters<typeof Example>[0]>;
+type Story = StoryObj<typeof Button>;
+
+export const Default: Story = {
+  args: {
+    children: 'Test'
+  }
+}
 
 export const Text: Story = {
   args: {
+    ...Default.args,
     variant: 'text',
-    disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Text Index');
-    },
-  },
-};
-
-export const TextHovered: Story = {
-  args: {
-    variant: 'text',
-    disabled: false,
-    size: 'small',
-    onClick: () => {
-      console.log('Small Text Index');
-    },
-  },
-  parameters: {
-    pseudo: {
-      hover: true,
+      console.log('Small Text');
     },
   },
 };
 
 export const Contained: Story = {
   args: {
+    ...Default.args,
     variant: 'contained',
     disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Contained Outlined Index');
-    },
-  },
-};
-
-export const ContainedHovered: Story = {
-  args: {
-    variant: 'contained',
-    disabled: false,
-    size: 'small',
-    onClick: () => {
-      console.log('Contained Outlined Index');
-    },
-  },
-  parameters: {
-    pseudo: {
-      hover: true,
+      console.log('Small Contained');
     },
   },
 };
 
 export const Outlined: Story = {
   args: {
+    ...Default.args,
     variant: 'outlined',
-    disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Outlined Index');
-    },
-  },
-};
-
-export const OutlinedHovered: Story = {
-  args: {
-    variant: 'outlined',
-    disabled: false,
-    size: 'small',
-    onClick: () => {
-      console.log('Small Outlined Index');
-    },
-  },
-  parameters: {
-    pseudo: {
-      hover: true,
+      console.log('Small Outlined');
     },
   },
 };
 
 export const Small: Story = {
   args: {
+    ...Default.args,
     variant: 'outlined',
-    disabled: false,
     size: 'small',
     onClick: () => {
-      console.log('Small Outlined Index');
+      console.log('Small Outlined');
     },
   },
 };
 
 export const Medium: Story = {
   args: {
+    ...Default.args,
     variant: 'outlined',
-    disabled: false,
     size: 'medium',
     onClick: () => {
-      console.log('Medium Outlined Index');
+      console.log('Medium Outlined');
     },
   },
 };
 
 export const Large: Story = {
   args: {
+    ...Default.args,
     variant: 'outlined',
-    disabled: false,
     size: 'large',
     onClick: () => {
-      console.log('Large Outlined Index');
+      console.log('Large Outlined');
+    },
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    variant: 'outlined',
+    disabled: true,
+    size: 'large',
+    onClick: () => {
+      console.log('Large Outlined Disabled');
     },
   },
 };

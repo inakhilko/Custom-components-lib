@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Example from './Example';
+import {Select} from "../../index";
 
-const meta: Meta<typeof Example> = {
+const meta: Meta<typeof Select> = {
   title: 'Select',
-  component: Example,
+  component: Select,
 };
 
 export default meta;
-type Story = StoryObj<Parameters<typeof Example>[0]>;
+type Story = StoryObj<typeof Select>;
 
 export const Outlined: Story = {
   args: {

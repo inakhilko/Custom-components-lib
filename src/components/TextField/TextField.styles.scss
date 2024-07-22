@@ -8,115 +8,229 @@
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+  color: var(--primaryColor);
 
-  .text-field__label {
-    padding: 0 2px;
+  &__wrapper {
+    position: relative;
+    border-radius: inherit;
+    box-sizing: border-box;
+  }
+
+  &__label {
+    padding: 0;
     position: absolute;
-    top: 32%;
-    left: 6%;
-    color: grey;
-    opacity: 1;
+    box-sizing: border-box;
+
+    color: var(--primaryLabelsColor);
     font-size: 1rem;
+
     transition:
-      opacity 0.3s ease-in-out,
+      color 0.3s ease-in-out,
       transform 0.3s ease-in-out;
-    transform: translateY(0);
     transform-origin: bottom left;
   }
 
-  .text-field {
-    position: relative;
-    border-radius: inherit;
+  &__input {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 
-    &__input {
-      margin: 0;
-      padding: 16.5px 14px;
-      border: 0;
+    font-size: 1rem;
 
-      color: currentColor;
-      font-size: 1rem;
-      background: none;
+    background: none;
 
-      &:focus {
-        outline: none;
-      }
-    }
-
-    &__set {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      top: -5px;
-      left: 0;
-      padding: 0 8px;
-      border: solid 1px var(--primaryColor);
-      border-radius: inherit;
-      pointer-events: none;
-    }
-
-    &__legend {
-      padding: 0;
-      font-size: 0.75rem;
-      opacity: 0;
-      max-width: 0.01px;
-      transition:
-        max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-        opacity 0.3s ease-in-out,
-        transform 0.3s ease-in-out;
-      white-space: nowrap;
+    &:focus {
+      outline: none;
     }
   }
 
-  &:focus-within {
-    .text-field__label {
-      color: var(--activeColor);
-      transform: translateY(-140%) scale(0.75);
-      transform-origin: bottom left;
+  &--outlined {
+    .custom-text-field {
+      &__label {
+        padding: 0 14px;
+        top: 32%;
+      }
+
+      &__input {
+        padding: 16.5px 14px;
+      }
+
+      &__set {
+        margin: 0;
+        padding: 0 8px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        top: -5px;
+        left: 0;
+        box-sizing: border-box;
+
+        border: solid 1px var(--primaryBordersColor);
+        border-radius: inherit;
+
+        transition: border 0.3s ease-in-out;
+        pointer-events: none;
+      }
+
+      &__legend {
+        padding: 0;
+        opacity: 0;
+        max-width: 0.01px;
+
+        font-size: 0.75rem;
+
+        transition:
+          max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+          opacity 0.3s ease-in-out;
+        white-space: nowrap;
+      }
     }
 
-    .text-field__set {
-      border: 2px solid var(--activeColor);
+    &:focus-within {
+      .custom-text-field {
+        &__label {
+          padding: 0 18px;
 
-      .text-field__legend {
-        max-width: 100%;
-        opacity: 0;
-        color: var(--activeColor);
-        font-size: 0.75rem;
-        padding: 0 4px;
+          color: var(--activeColor);
+          transform: translateY(-140%) scale(0.75);
+        }
+
+        &__set {
+          border: 2px solid var(--activeColor);
+        }
+
+        &__legend {
+          padding: 0 4px;
+          max-width: 100%;
+          opacity: 0;
+
+          color: var(--activeColor);
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+  &--standard {
+    .custom-text-field {
+      &__label {
+        top: 46%;
+      }
+
+      &__wrapper {
+        padding-top: 1rem;
+      }
+
+      &__input {
+        padding: 4px 0 5px;
+        border-bottom: 1px rgba(0, 0, 0, 0.87) solid;
+        transition: border-bottom-color 0.3s ease-in-out;
+      }
+    }
+
+    &:focus-within {
+      .custom-text-field {
+        &__label {
+          color: var(--activeColor);
+          transform: translateY(-140%) scale(0.75);
+        }
+
+        &__input {
+          border-bottom: 1px solid var(--activeColor);
+        }
+      }
+    }
+  }
+
+  &--filled {
+    border-radius: 4px 4px 0 0;
+
+    background-color: rgba(0, 0, 0, 0.06);
+    transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+    .custom-text-field {
+      &__label {
+        padding: 0 14px;
+        top: 46%;
+      }
+
+      &__wrapper {
+        padding: 25px 12px 8px;
+        border-bottom: 1px var(--primaryColor) solid;
+        transition: border-bottom 0.3s ease-in-out;
+      }
+    }
+
+    &:focus-within {
+      .custom-text-field {
+        &__label {
+          color: var(--activeColor);
+          transform: translateY(-100%) scale(0.75);
+        }
+
+        &__wrapper {
+          border-bottom: 1px solid var(--activeColor);
+        }
       }
     }
   }
 
   &--disabled {
     opacity: 0.5;
-    cursor: none;
   }
 
   &--error {
-    .text-field__label {
-      color: var(--errorColor);
-    }
+    .custom-text-field {
+      &__label {
+        color: var(--errorClr);
+      }
 
-    .text-field__set {
-      border: 2px solid var(--errorColor);
+      &__set {
+        border: 2px solid var(--errorClr);
+      }
+
+      &__input,
+      &__wrapper {
+        border-color: var(--errorClr);
+      }
     }
 
     &:focus-within {
-      .text-field__label {
-        color: var(--errorColor);
-      }
+      .custom-text-field {
+        &__label {
+          color: var(--errorClr);
+        }
 
-      .text-field__set {
-        border-color: var(--errorColor);
+        &__set {
+          border-color: var(--errorClr);
+        }
+
+        &__input,
+        &__wrapper {
+          border-color: var(--errorClr);
+        }
       }
     }
   }
 
   &--entered {
-    .text-field {
+    &.custom-text-field--outlined {
+      .custom-text-field__label {
+        padding: 0 18px;
+      }
+    }
+
+    &.custom-text-field--filled {
+      .custom-text-field__label {
+        transform: translateY(-100%) scale(0.75);
+      }
+    }
+
+    .custom-text-field {
       &__label {
         transform: translateY(-140%) scale(0.75);
-        transform-origin: bottom left;
       }
 
       &__legend {

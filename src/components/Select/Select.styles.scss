@@ -1,3 +1,5 @@
+@import '../variables';
+
 .custom-select {
   position: relative;
   box-sizing: border-box;
@@ -8,12 +10,14 @@
 
   &__label {
     position: absolute;
-    opacity: 1;
+    padding: 0;
+
     font-size: 1rem;
+    color: var(--primaryLabelsColor);
+
     transition:
       opacity 0.3s ease-in-out,
       transform 0.3s ease-in-out;
-    color: grey;
     transform-origin: bottom left;
   }
 
@@ -23,10 +27,13 @@
   }
 
   &__input {
+    width: 100%;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     border: 0;
 
-    color: currentColor;
+    color: var(--primaryColor);
     font-size: 1rem;
     background: none;
     cursor: pointer;
@@ -37,30 +44,19 @@
   }
 
   &__arrow {
-    user-select: none;
     width: 1em;
     height: 1em;
     display: inline-block;
-    fill: currentColor;
-    flex-shrink: 0;
-    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    font-size: 1.5rem;
     position: absolute;
     right: 7px;
     top: calc(50% - 0.5em);
-    pointer-events: none;
+
+    fill: currentColor;
+    font-size: 1.5rem;
     color: rgba(0, 0, 0, 0.54);
-  }
 
-  &--disabled {
-    opacity: 0.5;
-    cursor: none;
-
-    .custom-select {
-      &__input {
-        cursor: auto;
-      }
-    }
+    pointer-events: none;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   &__dropdown {
@@ -73,7 +69,7 @@
     outline: 0;
 
     background-color: rgb(255, 255, 255);
-    color: rgba(0, 0, 0, 0.87);
+    color: var(--primaryColor);
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 4px;
     box-shadow:
@@ -88,6 +84,7 @@
     &-option {
       display: block;
       padding: 6px 16px;
+      transition: background-color 0.3s ease-in-out;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.04);
@@ -116,10 +113,8 @@
 
     .custom-select {
       &__label {
-        padding: 0 2px;
+        padding: 0 14px;
         top: 32%;
-        left: 6%;
-        transform: translateY(0) scale(1);
       }
 
       &__input {
@@ -132,9 +127,11 @@
         right: 0;
         top: -5px;
         left: 0;
+        box-sizing: border-box;
         padding: 0 8px;
-        border: solid 1px rgba(0, 0, 0, 0.23);
+        border: solid 1px var(--primaryBordersColor);
         border-radius: inherit;
+
         pointer-events: none;
         transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
       }
@@ -152,12 +149,14 @@
     &:focus-within {
       .custom-select {
         &__label {
-          color: #1976d2;
+          padding: 0 18px;
+
+          color: var(--activeColor);
           transform: translateY(-140%) scale(0.75);
         }
 
         &__fieldset {
-          border: 2px solid #1976d2;
+          border: 2px solid var(--activeColor);
         }
 
         &__legend {
@@ -172,7 +171,6 @@
     .custom-select {
       &__label {
         top: 46%;
-        transform: translateY(0) scale(1);
       }
 
       &__wrapper {
@@ -181,7 +179,10 @@
 
       &__input {
         padding: 4px 24px 5px 0;
-        border-bottom: 1px rgba(0, 0, 0, 0.87) solid;
+        border-bottom: 1px var(--primaryColor) solid;
+
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out;
       }
 
       &__arrow {
@@ -193,12 +194,12 @@
     &:focus-within {
       .custom-select {
         &__label {
-          color: #1976d2;
+          color: var(--activeColor);
           transform: translateY(-140%) scale(0.75);
         }
 
         &__input {
-          border-bottom: 2px solid #1976d2;
+          border-bottom: 2px solid var(--activeColor);
 
           background-color: rgba(0, 0, 0, 0.06);
         }
@@ -210,20 +211,19 @@
     background-color: rgba(0, 0, 0, 0.06);
     border-radius: 4px 4px 0 0;
 
-    color: rgba(0, 0, 0, 0.87);
+    color: var(--primaryColor);
 
     transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 
     .custom-select {
       &__label {
         top: 46%;
-        left: 6%;
-        transform: translateY(0) scale(1);
+        left: 2%;
       }
 
       &__wrapper {
         padding: 25px 32px 8px 12px;
-        border-bottom: 1px rgba(0, 0, 0, 0.87) solid;
+        border-bottom: 1px var(--primaryColor) solid;
       }
 
       &__arrow {
@@ -235,12 +235,12 @@
     &:focus-within {
       .custom-select {
         &__label {
-          color: #1976d2;
+          color: var(--activeColor);
           transform: translateY(-100%) scale(0.75);
         }
 
         &__wrapper {
-          border-bottom: 2px solid #1976d2;
+          border-bottom: 2px solid var(--activeColor);
         }
       }
     }
@@ -257,36 +257,59 @@
   &--selected {
     .custom-select__label {
       transform: translateY(-140%) scale(0.75);
-      transform-origin: bottom left;
     }
 
     .custom-select__legend {
       max-width: 100%;
       padding: 0 4px;
     }
+
+    &.custom-select {
+      &--outlined {
+        .custom-select__label {
+          padding: 0 18px;
+        }
+      }
+    }
   }
 
   &--disabled {
     opacity: 0.5;
-    cursor: none;
+    pointer-events: none;
+
+    .custom-select {
+      &__input {
+        cursor: auto;
+      }
+    }
   }
 
   &--error {
-    .text-field__label {
-      color: var(--errorColor);
-    }
+    .custom-select {
+      &__label {
+        color: var(--errorClr);
+      }
 
-    .text-field__set {
-      border: 2px solid var(--errorColor);
+      &__input,
+      &__fieldset,
+      &__wrapper {
+        border-color: var(--errorClr);
+        color: var(--errorClr);
+      }
     }
 
     &:focus-within {
-      .text-field__label {
-        color: var(--errorColor);
-      }
+      .custom-select {
+        &__label {
+          color: var(--errorClr);
+        }
 
-      .text-field__set {
-        border-color: var(--errorColor);
+        &__input,
+        &__fieldset,
+        &__wrapper {
+          color: var(--errorClr);
+          border-color: var(--errorClr);
+        }
       }
     }
   }

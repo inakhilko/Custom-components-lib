@@ -11,8 +11,10 @@
     "esModuleInterop": true,
     "declaration": true,
     "strictNullChecks": true,
-    "types": ["node", "webpack-env"]
+    "types": ["node"]
   },
+  "include": ["src", "./src/stories"],
+  "exclude": ["node_modules", "dist"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
