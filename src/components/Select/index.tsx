@@ -40,10 +40,27 @@ const Select: React.FC<SelectProps> = ({
 
   const ref = useOutsideClick(handleClickOutsideSelectDropdown);
 
+  const customSelectElementClasses = [
+    'custom-select',
+    'custom-select--' + variant,
+  ];
+  if (selectedOption !== '') {
+    customSelectElementClasses.push('custom-select--selected');
+  }
+  if (isSelectMenuOpened) {
+    customSelectElementClasses.push('custom-select--opened');
+  }
+  if (disabled) {
+    customSelectElementClasses.push('custom-select--disabled');
+  }
+  if (error) {
+    customSelectElementClasses.push('custom-select--error');
+  }
+
   return (
     <div
       ref={ref}
-      className={`custom-select ${'custom-select--' + variant} ${selectedOption !== '' && 'custom-select--selected'} ${isSelectMenuOpened && 'custom-select--opened'}  ${disabled && 'custom-select--disabled'} ${error && 'custom-select--error'}`}
+      className={customSelectElementClasses.join(' ')}
       onClick={onCustomSelectClick}
     >
       <label className="custom-select__label" htmlFor="custom-select-input">

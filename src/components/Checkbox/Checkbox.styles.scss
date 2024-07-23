@@ -1,3 +1,5 @@
+@import './../variables';
+
 .custom-checkbox {
   position: relative;
   box-sizing: border-box;
@@ -8,7 +10,7 @@
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--primaryLabelsColor);
 
   &__block {
     position: relative;
@@ -26,15 +28,21 @@
       border-radius: 50%;
       pointer-events: none;
       background-color: rgba(25, 118, 210, 0.1);
-      transform: scale(1);
+      transform: scale(0);
       opacity: 0;
       transform-origin: center;
-      transition: transform 0.3s ease-in-out;
+      transition:
+        transform 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
     }
 
     &:hover::after {
       opacity: 1;
       transform: scale(1);
+    }
+
+    &:active::after {
+      background-color: #3b82f680;
     }
   }
 
@@ -43,6 +51,10 @@
     height: 1rem;
 
     & path {
+      fill: var(--primaryLabelsColor);
+    }
+
+    &--checked path {
       fill: currentColor;
     }
   }
@@ -66,6 +78,7 @@
 
   &--disabled {
     opacity: 0.5;
+    pointer-events: none;
 
     .custom-checkbox {
       &__input {

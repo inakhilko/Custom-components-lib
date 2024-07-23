@@ -11,8 +11,9 @@ type Story = StoryObj<typeof Checkbox>;
 
 export const NotChecked: Story = {
   args: {
-    checked: false,
-    onChange: () => { console.log('Hello checkbox'); },
+    onChange: () => {
+      console.log('Hello checkbox');
+    },
     label: 'Click here',
   },
 };
@@ -20,7 +21,9 @@ export const NotChecked: Story = {
 export const Checked: Story = {
   args: {
     checked: true,
-    onChange: () => { console.log('Hello checkbox'); },
+    onChange: () => {
+      console.log('Hello checkbox');
+    },
     label: 'Click here',
   },
 };
@@ -28,7 +31,9 @@ export const Checked: Story = {
 export const Disabled: Story = {
   args: {
     checked: false,
-    onChange: () => { console.log('Hello checkbox'); },
+    onChange: () => {
+      console.log('Hello checkbox');
+    },
     label: 'Click here',
     disabled: true,
   },
