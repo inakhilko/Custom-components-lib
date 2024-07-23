@@ -1,10 +1,12 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, type MutableRefObject } from 'react';
 
-const useOutsideClick = (callback: (event?: Event) => void) => {
+const useOutsideClick = (
+  callback: (event?: Event) => void
+): MutableRefObject<null> => {
   const ref = useRef(null);
 
   useEffect(() => {
-    const handleClick = (event: Event) => {
+    const handleClick = (event: Event): void => {
       if (
         ref.current &&
         !(ref.current as HTMLElement).contains(event.target as HTMLElement)

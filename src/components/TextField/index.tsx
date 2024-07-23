@@ -14,6 +14,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
     disabled,
     error = '',
     value,
+    onChange,
     ...otherProps
   } = props;
 
@@ -42,6 +43,9 @@ const TextField: React.FC<TextFieldProps> = (props) => {
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
+            if (onChange !== undefined) {
+              onChange(e);
+            }
           }}
           {...otherProps}
         />
