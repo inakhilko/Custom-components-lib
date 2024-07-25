@@ -1,13 +1,8 @@
-import React, { MouseEventHandler, ReactNode } from 'react';
+import React, { type ComponentProps } from 'react';
 import './Button.styles.scss';
-export type ButtonProps = {
-  variant: 'text' | 'contained' | 'outlined';
-  disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  size: 'small' | 'medium' | 'large';
-};
-type PropsWithChildren<P> = P & {
-  children?: ReactNode;
-};
-declare const Button: React.FC<PropsWithChildren<ButtonProps>>;
+export interface ButtonProps extends ComponentProps<'button'> {
+    variant: 'text' | 'contained' | 'outlined';
+    size: 'small' | 'medium' | 'large';
+}
+declare const Button: React.FC<ButtonProps>;
 export default Button;

@@ -2,25 +2,41 @@ import React, { type ComponentProps, useState } from 'react';
 import './Modal.styles.scss';
 import useOutsideClick from '../../hooks/onClickOutside';
 
-const Modal: React.FC<ComponentProps<'dialog'>> = (
-  props: ComponentProps<'dialog'>
-) => {
-  const { open = false, children, ...otherProps } = props;
+interface ModalProps extends ComponentProps<'div'> {
+  open: boolean;
+  onClose: (event?: Event) => void;
+}
 
-  const [isModalOpen, setIsModalOpen] = useState(open);
+const Modal: React.FC<ModalProps> = (props: ModalProps) => {
+  const { open, onClose, children, ...otherProps } = props;
 
-  const onOutsideModalContentClick = (): void => {
-    setIsModalOpen(false);
-  };
+  // const [isModalOpen, setIsModalOpen] = useState(open);
 
-  const ref = useOutsideClick(onOutsideModalContentClick);
+  // const onOutsideModalContentClick = (event: Event): void => {
+  //   // setIsModalOpen(false);
+  //   onClose(event);
+  // };
+
+  // const ref = useOutsideClick(onOutsideModalContentClick);
+
+  const modalClassesList = ['modal'];
+
+  if (open) {
+    modalClassesList.push('modal--opened');
+  }
 
   return (
-    <dialog className="modal" open={isModalOpen} {...otherProps}>
-      <div className="modal-wrapper" ref={ref}>
+    <div className={modalClassesList.join(' ')}>
+      <div
+        className="modal__backdrop"
+        onClick={() => {
+          onClose();
+        }}
+      ></div>
+      <div className="modal__content" {...otherProps}>
         {children}
       </div>
-    </dialog>
+    </div>
   );
 };
 

@@ -10,7 +10,8 @@
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  color: var(--primaryLabelsColor);
+  cursor: pointer;
+  color: var(--primaryColor);
 
   &__block {
     position: relative;
@@ -36,7 +37,8 @@
         background-color 0.3s ease-in-out;
     }
 
-    &:hover::after {
+    &:hover::after,
+    &:focus-within::after {
       opacity: 1;
       transform: scale(1);
     }
@@ -49,6 +51,7 @@
   &__icon {
     width: 1rem;
     height: 1rem;
+    font-size: 1.2rem;
 
     & path {
       fill: var(--primaryLabelsColor);

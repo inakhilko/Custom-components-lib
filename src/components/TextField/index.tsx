@@ -2,9 +2,9 @@ import React, { type ComponentProps, useState } from 'react';
 import './TextField.styles.scss';
 
 export interface TextFieldProps extends ComponentProps<'input'> {
-  error: string;
+  error?: { message: string };
   variant: 'standard' | 'filled' | 'outlined';
-  label: string;
+  label?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = (props) => {
@@ -12,7 +12,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
     variant = 'standard',
     label,
     disabled,
-    error = '',
+    error,
     value,
     onChange,
     ...otherProps
@@ -26,15 +26,15 @@ const TextField: React.FC<TextFieldProps> = (props) => {
   if (disabled === true) {
     textFieldElementClasses.push('custom-text-field--disabled');
   }
-  if (error !== '') {
+  if (error !== undefined) {
     textFieldElementClasses.push('custom-text-field--error');
   }
   if (inputValue !== '') {
     textFieldElementClasses.push('custom-text-field--entered');
   }
   return (
-    <div className={textFieldElementClasses.join(' ')}>
-      <label className="custom-text-field__label">{label}</label>
+    <label className={textFieldElementClasses.join(' ')}>
+      <span className="custom-text-field__label">{label}</span>
       <div className="custom-text-field__wrapper">
         <input
           className="custom-text-field__input"
@@ -43,9 +43,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
-            if (onChange !== undefined) {
-              onChange(e);
-            }
+            onChange?.(e);
           }}
           {...otherProps}
         />
@@ -54,9 +52,11 @@ const TextField: React.FC<TextFieldProps> = (props) => {
             <legend className="custom-text-field__legend">{label}</legend>
           </fieldset>
         )}
-        {/* {error !== '' && <span className="error">{error}</span>} */}
       </div>
-    </div>
+      {error?.message !== undefined && (
+        <span className="custom-text-field__error">{error.message}</span>
+      )}
+    </label>
   );
 };
 

@@ -68,9 +68,6 @@ const Select: React.FC<SelectProps> = ({
       </label>
       <div className="custom-select__wrapper">
         <input
-          aria-invalid="false"
-          aria-hidden="true"
-          tabIndex={-1}
           className="custom-select__input"
           value={selectedOption}
           disabled={disabled}

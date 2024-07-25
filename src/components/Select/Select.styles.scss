@@ -7,9 +7,11 @@
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+  text-align: left;
 
   &__label {
     position: absolute;
+    left: 0;
     padding: 0;
 
     font-size: 1rem;
@@ -62,6 +64,7 @@
   &__dropdown {
     position: absolute;
     visibility: hidden;
+    z-index: 0;
 
     list-style: none;
     margin: 0;
@@ -85,6 +88,7 @@
       display: block;
       padding: 6px 16px;
       transition: background-color 0.3s ease-in-out;
+      cursor: pointer;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.04);
@@ -100,6 +104,7 @@
     .custom-select {
       &__dropdown {
         visibility: visible;
+        z-index: 10;
       }
 
       &__arrow {
@@ -119,6 +124,7 @@
 
       &__input {
         padding: 16.5px 14px;
+        transition: border 0.3s ease-in-out;
       }
 
       &__fieldset {
@@ -129,11 +135,14 @@
         left: 0;
         box-sizing: border-box;
         padding: 0 8px;
+        margin: 0;
         border: solid 1px var(--primaryBordersColor);
         border-radius: inherit;
 
         pointer-events: none;
-        transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        transition:
+          max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+          border 0.3s ease-in-out;
       }
 
       &__legend {
@@ -146,13 +155,17 @@
       }
     }
 
+    &:hover .custom-select__fieldset {
+      border: solid 1px var(--primaryColor);
+    }
+
     &:focus-within {
       .custom-select {
         &__label {
           padding: 0 18px;
 
           color: var(--activeColor);
-          transform: translateY(-140%) scale(0.75);
+          transform: translateY(-100%) scale(0.75);
         }
 
         &__fieldset {
@@ -182,13 +195,19 @@
         border-bottom: 1px var(--primaryColor) solid;
 
         background-color: transparent;
-        transition: background-color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          border-bottom 0.3s ease-in-out;
       }
 
       &__arrow {
         top: unset;
         bottom: 4px;
       }
+    }
+
+    &:hover .custom-select__input {
+      border-bottom: solid 2px var(--primaryColor);
     }
 
     &:focus-within {
@@ -218,18 +237,23 @@
     .custom-select {
       &__label {
         top: 46%;
-        left: 2%;
+        padding-left: 12px;
       }
 
-      &__wrapper {
+      &__input {
         padding: 25px 32px 8px 12px;
         border-bottom: 1px var(--primaryColor) solid;
+        transition: border-bottom 0.3s ease-in-out;
       }
 
       &__arrow {
         top: unset;
         bottom: 4px;
       }
+    }
+
+    &:hover .custom-select__input {
+      border-bottom: solid 2px var(--primaryColor);
     }
 
     &:focus-within {
@@ -239,7 +263,7 @@
           transform: translateY(-100%) scale(0.75);
         }
 
-        &__wrapper {
+        &__input {
           border-bottom: 2px solid var(--activeColor);
         }
       }
@@ -291,8 +315,7 @@
       }
 
       &__input,
-      &__fieldset,
-      &__wrapper {
+      &__fieldset {
         border-color: var(--errorClr);
         color: var(--errorClr);
       }
@@ -305,8 +328,7 @@
         }
 
         &__input,
-        &__fieldset,
-        &__wrapper {
+        &__fieldset {
           color: var(--errorClr);
           border-color: var(--errorClr);
         }

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Example from './Example';
-declare const meta: Meta<typeof Example>;
+import { Select } from "../../index";
+declare const meta: Meta<typeof Select>;
 export default meta;
-type Story = StoryObj<Parameters<typeof Example>[0]>;
+type Story = StoryObj<typeof Select>;
 export declare const Outlined: Story;
 export declare const Standard: Story;
 export declare const Filled: Story;

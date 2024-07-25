@@ -18,6 +18,11 @@
     box-shadow 0.3s ease-in-out;
   cursor: pointer;
 
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid hsla(210, 100%, 45%, 0.5);
+  }
+
   &-variant {
     &--text {
       outline: none;

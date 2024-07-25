@@ -25,7 +25,6 @@ const Switch: React.FC<ComponentProps<'input'>> = (
         <input
           className="switch__block-input"
           type="checkbox"
-          aria-label="Switch demo"
           checked={isChecked}
           disabled={disabled}
           {...otherProps}

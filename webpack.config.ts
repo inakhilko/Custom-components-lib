@@ -1,5 +1,4 @@
 import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export default {
   mode: 'production',
@@ -10,17 +9,12 @@ export default {
     libraryTarget: 'umd',
     clean: true,
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-    }),
-  ],
   module: {
     rules: [
       {
         test: /\.(s*)css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /node_modules/,
       },
       {
         test: /\.tsx?$/,

@@ -58,7 +58,8 @@
         background-color 0.3s ease-in-out;
     }
 
-    &:hover .switch__block-circle--hovered {
+    &:hover .switch__block-circle--hovered,
+    &:focus-within .switch__block-circle--hovered {
       opacity: 1;
     }
 
@@ -88,7 +89,8 @@
           background-color: var(--activeColor);
         }
 
-        &:hover .switch__block-circle--hovered {
+        &:hover .switch__block-circle--hovered,
+        &:focus-within .switch__block-circle--hovered {
           background-color: rgba(25, 118, 210, 0.04);
         }
 

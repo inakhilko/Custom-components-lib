@@ -46,6 +46,8 @@ export const Disabled: Story = {
 export const Error: Story = {
   args: {
     ...Default.args,
-    error: 'Input is not valid',
+    error: {
+      message: 'Input is not valid',
+    },
   },
 };
