@@ -21,18 +21,17 @@ const Select: React.FC<SelectProps> = ({
   const [isSelectMenuOpened, setIsSelectMenuOpened] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
-  const onOptionSelection = useCallback(
-    (event: React.MouseEvent<HTMLUListElement>) => {
-      if (!(event.target === event.currentTarget)) {
-        setSelectedOption((event.target as HTMLUListElement).innerText);
-      }
-    },
-    [setSelectedOption]
-  );
+  const onOptionSelection = (
+    event: React.MouseEvent<HTMLUListElement>
+  ): void => {
+    if (!(event.target === event.currentTarget)) {
+      setSelectedOption((event.target as HTMLUListElement).innerText);
+    }
+  };
 
-  const onCustomSelectClick = useCallback(() => {
+  const onCustomSelectClick = (): void => {
     setIsSelectMenuOpened((prev) => !prev);
-  }, []);
+  };
 
   const handleClickOutsideSelectDropdown = useCallback(() => {
     setIsSelectMenuOpened(false);
