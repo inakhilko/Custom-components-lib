@@ -1,8 +1,8 @@
 {
   "name": "ikh-custom-components-lib",
-  "version": "1.0.10",
+  "version": "1.0.15",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./dist/src/index.js",
   "scripts": {
     "build": "webpack",
     "lint": "eslint . --fix --max-warnings=0",

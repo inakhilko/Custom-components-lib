@@ -4,7 +4,7 @@ export default {
   mode: 'production',
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist', 'src'),
     filename: 'index.js',
     libraryTarget: 'umd',
     clean: true,
@@ -17,10 +17,15 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
+        exclude: [/(\.test\.(ts|tsx)$)/, /node_modules/],
         use: 'ts-loader',
-        exclude: /node_modules/,
       },
+      // {
+      //   test: /\.tsx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
     ],
   },
   resolve: {
