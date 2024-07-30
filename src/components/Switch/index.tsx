@@ -10,20 +10,16 @@ const Switch: React.FC<ComponentProps<'input'>> = (
     setIsChecked((prev) => !prev);
   };
 
-  const checkboxElementClasses = ['switch'];
-
-  if (disabled) {
-    checkboxElementClasses.push('switch--disabled');
-  }
-  if (isChecked) {
-    checkboxElementClasses.push('switch--checked');
-  }
+  const checkboxElementClasses = [
+    'switch',
+    disabled && 'switch--disabled',
+    isChecked && 'switch--checked',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <label
-      className={checkboxElementClasses.join(' ')}
-      data-testid="tested-switch"
-    >
+    <label className={checkboxElementClasses} data-testid="tested-switch">
       <div className="switch__block" onClick={onCheckboxClick}>
         <input
           className="switch__block-input"

@@ -13,14 +13,19 @@ const Button: React.FC<ButtonProps> = (props) => {
     size = 'medium',
     ...otherProps
   } = props;
+
+  const buttonClasses = [
+    'button',
+    `button-variant--${variant}`,
+    `button-size--${size}`,
+    disabled === true ? 'button--disabled' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <button
-      className={[
-        'button',
-        `button-variant--${variant}`,
-        `button-size--${size}`,
-        disabled === true ? `button--disabled` : '',
-      ].join(' ')}
+      className={buttonClasses}
       type="button"
       disabled={disabled}
       {...otherProps}

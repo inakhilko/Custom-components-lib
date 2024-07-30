@@ -22,21 +22,14 @@ const TextField: React.FC<TextFieldProps> = (props) => {
   const textFieldElementClasses = [
     'custom-text-field',
     `custom-text-field--${variant}`,
-  ];
-  if (disabled === true) {
-    textFieldElementClasses.push('custom-text-field--disabled');
-  }
-  if (error !== undefined) {
-    textFieldElementClasses.push('custom-text-field--error');
-  }
-  if (inputValue !== '') {
-    textFieldElementClasses.push('custom-text-field--entered');
-  }
+    disabled === true && 'custom-text-field--disabled',
+    error != null && 'custom-text-field--error',
+    inputValue !== '' && 'custom-text-field--entered',
+  ]
+    .filter(Boolean)
+    .join(' ');
   return (
-    <label
-      className={textFieldElementClasses.join(' ')}
-      data-testid="tested-textfield"
-    >
+    <label className={textFieldElementClasses} data-testid="tested-textfield">
       <span className="custom-text-field__label">{label}</span>
       <div className="custom-text-field__wrapper">
         <input

@@ -20,20 +20,16 @@ const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
     onChange?.(event);
   };
 
-  const checkboxElementClasses = ['custom-checkbox'];
-
-  if (disabled) {
-    checkboxElementClasses.push('custom-checkbox--disabled');
-  }
-  if (isChecked) {
-    checkboxElementClasses.push('custom-checkbox--checked');
-  }
+  const checkboxElementClasses = [
+    'custom-checkbox',
+    disabled && 'custom-checkbox--disabled',
+    isChecked && 'custom-checkbox--checked',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <label
-      className={checkboxElementClasses.join(' ')}
-      data-testid="tested-checkbox"
-    >
+    <label className={checkboxElementClasses} data-testid="tested-checkbox">
       <span className="custom-checkbox__block">
         {isChecked ? (
           <svg

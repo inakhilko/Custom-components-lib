@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from "../../components/Button";
+import Button from '../../components/Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Button',
@@ -11,9 +11,9 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    children: 'Test'
-  }
-}
+    children: 'Test',
+  },
+};
 
 export const Text: Story = {
   args: {
@@ -30,7 +30,6 @@ export const Contained: Story = {
   args: {
     ...Default.args,
     variant: 'contained',
-    disabled: false,
     size: 'small',
     onClick: () => {
       console.log('Small Contained');

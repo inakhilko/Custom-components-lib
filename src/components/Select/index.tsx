@@ -42,25 +42,19 @@ const Select: React.FC<SelectProps> = ({
 
   const customSelectElementClasses = [
     'custom-select',
-    'custom-select--' + variant,
-  ];
-  if (selectedOption !== '') {
-    customSelectElementClasses.push('custom-select--selected');
-  }
-  if (isSelectMenuOpened) {
-    customSelectElementClasses.push('custom-select--opened');
-  }
-  if (disabled) {
-    customSelectElementClasses.push('custom-select--disabled');
-  }
-  if (error) {
-    customSelectElementClasses.push('custom-select--error');
-  }
+    `custom-select--${variant}`,
+    selectedOption !== '' && 'custom-select--selected',
+    isSelectMenuOpened && 'custom-select--opened',
+    disabled && 'custom-select--disabled',
+    error && 'custom-select--error',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div
       ref={ref}
-      className={customSelectElementClasses.join(' ')}
+      className={customSelectElementClasses}
       onClick={onCustomSelectClick}
       data-testid="tested-select"
     >

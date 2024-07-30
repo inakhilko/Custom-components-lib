@@ -165,7 +165,7 @@
           padding: 0 18px;
 
           color: var(--activeColor);
-          transform: translateY(-100%) scale(0.75);
+          transform: translateY(-140%) scale(0.75);
         }
 
         &__fieldset {
@@ -318,6 +318,19 @@
       &__fieldset {
         border-color: var(--errorClr);
         color: var(--errorClr);
+      }
+    }
+
+    &.custom-select--outlined:hover {
+      .custom-select__fieldset {
+        border: 2px solid var(--errorClr);
+      }
+    }
+
+    &.custom-select--standard:hover,
+    &.custom-select--filled:hover {
+      .custom-select__input {
+        border-bottom: 2px solid var(--errorClr);
       }
     }
 

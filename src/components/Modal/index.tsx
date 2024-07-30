@@ -9,14 +9,12 @@ interface ModalProps extends ComponentProps<'div'> {
 const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   const { open, onClose, children, ...otherProps } = props;
 
-  const modalClassesList = ['modal'];
-
-  if (open) {
-    modalClassesList.push('modal--opened');
-  }
+  const modalClassesList = ['modal', open && 'modal--opened']
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <div className={modalClassesList.join(' ')} data-testid="modal">
+    <div className={modalClassesList} data-testid="modal">
       <div
         className="modal__backdrop"
         data-testid="modal-backdrop"
