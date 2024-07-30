@@ -13,6 +13,9 @@
     position: absolute;
     left: 0;
     padding: 0;
+    width: 100%;
+    max-height: 1.2rem;
+    overflow: hidden;
 
     font-size: 1rem;
     color: var(--primaryLabelsColor);
@@ -119,7 +122,7 @@
     .custom-select {
       &__label {
         padding: 0 14px;
-        top: 32%;
+        top: 1rem;
       }
 
       &__input {
@@ -165,7 +168,7 @@
           padding: 0 18px;
 
           color: var(--activeColor);
-          transform: translateY(-140%) scale(0.75);
+          transform: translateY(-1.5rem) scale(0.75);
         }
 
         &__fieldset {
@@ -214,7 +217,7 @@
       .custom-select {
         &__label {
           color: var(--activeColor);
-          transform: translateY(-140%) scale(0.75);
+          transform: translateY(-1.5rem) scale(0.75);
         }
 
         &__input {

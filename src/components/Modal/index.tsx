@@ -1,4 +1,4 @@
-import React, { type ComponentProps, type MouseEvent } from 'react';
+import React, { type ComponentProps, type MouseEvent, useEffect } from 'react';
 import './Modal.styles.scss';
 
 interface ModalProps extends ComponentProps<'div'> {
@@ -12,6 +12,20 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   const modalClassesList = ['modal', open && 'modal--opened']
     .filter(Boolean)
     .join(' ');
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  if (!open) return null;
 
   return (
     <div className={modalClassesList} data-testid="modal">

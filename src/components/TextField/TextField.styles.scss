@@ -26,6 +26,9 @@
     padding: 0;
     position: absolute;
     left: 0;
+    width: 100%;
+    max-height: 1.2rem;
+    overflow: hidden;
     box-sizing: border-box;
 
     color: var(--primaryLabelsColor);
@@ -111,7 +114,7 @@
           padding: 0 18px;
 
           color: var(--activeColor);
-          transform: translateY(-140%) scale(0.75);
+          transform: translateY(-1.5rem) scale(0.75);
         }
 
         &__set {
@@ -276,7 +279,7 @@
     &.custom-text-field--outlined {
       .custom-text-field__label {
         padding: 0 18px;
-        transform: translateY(-140%) scale(0.75);
+        transform: translateY(-1.5rem) scale(0.75);
       }
     }
 
