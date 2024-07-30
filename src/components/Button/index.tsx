@@ -22,6 +22,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         disabled === true ? `button--disabled` : '',
       ].join(' ')}
       type="button"
+      disabled={disabled}
       {...otherProps}
     />
   );

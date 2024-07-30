@@ -20,7 +20,10 @@ const Switch: React.FC<ComponentProps<'input'>> = (
   }
 
   return (
-    <label className={checkboxElementClasses.join(' ')}>
+    <label
+      className={checkboxElementClasses.join(' ')}
+      data-testid="tested-switch"
+    >
       <div className="switch__block" onClick={onCheckboxClick}>
         <input
           className="switch__block-input"

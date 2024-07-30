@@ -33,7 +33,10 @@ const TextField: React.FC<TextFieldProps> = (props) => {
     textFieldElementClasses.push('custom-text-field--entered');
   }
   return (
-    <label className={textFieldElementClasses.join(' ')}>
+    <label
+      className={textFieldElementClasses.join(' ')}
+      data-testid="tested-textfield"
+    >
       <span className="custom-text-field__label">{label}</span>
       <div className="custom-text-field__wrapper">
         <input

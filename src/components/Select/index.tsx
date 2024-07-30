@@ -6,8 +6,8 @@ export interface SelectProps {
   variant: 'standard' | 'filled' | 'outlined';
   selectOptions: number[] | string[];
   label: string;
-  disabled: boolean;
-  error: boolean;
+  disabled?: boolean;
+  error?: boolean;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -62,6 +62,7 @@ const Select: React.FC<SelectProps> = ({
       ref={ref}
       className={customSelectElementClasses.join(' ')}
       onClick={onCustomSelectClick}
+      data-testid="tested-select"
     >
       <label className="custom-select__label" htmlFor="custom-select-input">
         {label}
@@ -71,6 +72,7 @@ const Select: React.FC<SelectProps> = ({
           className="custom-select__input"
           value={selectedOption}
           disabled={disabled}
+          type={'text'}
           readOnly
         />
         <svg

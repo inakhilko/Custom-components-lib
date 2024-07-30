@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "ESNext",
-    "target": "es5",
+    "module": "ESNext", // ?commonjs
+    "target": "es5", //?es6
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
@@ -11,9 +11,14 @@
     "esModuleInterop": true,
     "declaration": true,
     "strictNullChecks": true,
-    "types": ["node"]
+    "types": ["node"],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+//    "baseUrl": "./src"
   },
-  "include": ["src", "./src/stories"],
+  "include": ["src", "./src/stories", "jest.setup.ts"],
   "exclude": ["node_modules", "dist"],
   "ts-node": {
     "compilerOptions": {

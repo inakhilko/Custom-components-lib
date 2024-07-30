@@ -1,23 +1,13 @@
-import React, { type ComponentProps, useState } from 'react';
+import React, { type ComponentProps, type MouseEvent } from 'react';
 import './Modal.styles.scss';
-import useOutsideClick from '../../hooks/onClickOutside';
 
 interface ModalProps extends ComponentProps<'div'> {
   open: boolean;
-  onClose: (event?: Event) => void;
+  onClose?: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
 const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   const { open, onClose, children, ...otherProps } = props;
-
-  // const [isModalOpen, setIsModalOpen] = useState(open);
-
-  // const onOutsideModalContentClick = (event: Event): void => {
-  //   // setIsModalOpen(false);
-  //   onClose(event);
-  // };
-
-  // const ref = useOutsideClick(onOutsideModalContentClick);
 
   const modalClassesList = ['modal'];
 
@@ -26,11 +16,12 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
   }
 
   return (
-    <div className={modalClassesList.join(' ')}>
+    <div className={modalClassesList.join(' ')} data-testid="modal">
       <div
         className="modal__backdrop"
-        onClick={() => {
-          onClose();
+        data-testid="modal-backdrop"
+        onClick={(event) => {
+          onClose?.(event);
         }}
       ></div>
       <div className="modal__content" {...otherProps}>

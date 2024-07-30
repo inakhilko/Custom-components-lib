@@ -1,4 +1,4 @@
-import React, { type ComponentProps, useState } from 'react';
+import React, { type ChangeEvent, type ComponentProps, useState } from 'react';
 import './Checkbox.styles.scss';
 
 export interface CheckboxProps extends ComponentProps<'input'> {
@@ -11,11 +11,13 @@ const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
     disabled = false,
     label,
     type,
+    onChange,
     ...otherProps
   } = props;
   const [isChecked, setIsChecked] = useState(checked);
-  const onCheckboxClick = (): void => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setIsChecked((prev) => !prev);
+    onChange?.(event);
   };
 
   const checkboxElementClasses = ['custom-checkbox'];
@@ -28,8 +30,11 @@ const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
   }
 
   return (
-    <label className={checkboxElementClasses.join(' ')}>
-      <span className="custom-checkbox__block" onClick={onCheckboxClick}>
+    <label
+      className={checkboxElementClasses.join(' ')}
+      data-testid="tested-checkbox"
+    >
+      <span className="custom-checkbox__block">
         {isChecked ? (
           <svg
             className="custom-checkbox__icon custom-checkbox__icon--checked"
@@ -57,6 +62,7 @@ const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
           name="checkbox"
           checked={isChecked}
           disabled={disabled}
+          onChange={onInputChange}
           {...otherProps}
         />
       </span>
